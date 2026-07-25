@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PreethiMart — Final Review Capstone Presentation</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary: #4f46e5;
+            --primary-dark: #3730a3;
+            --text-dark: #0f172a;
+            --bg-light: #f8fafc;
+        }
+        * { box-sizing: border-box; margin: 0; padding: 0; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; }
+        body { background: #0f172a; color: #f8fafc; display: flex; justify-content: center; align-items: center; min-height: 100vh; padding: 20px; }
+        .slide-container { width: 100%; max-width: 960px; aspect-ratio: 16/9; background: #ffffff; color: var(--text-dark); border-radius: 16px; box-shadow: 0 25px 50px -12px rgba(0,0,0,0.5); overflow: hidden; display: flex; flex-direction: column; position: relative; }
+        .slide { display: none; padding: 48px 60px; height: 100%; flex-direction: column; justify-content: center; }
+        .slide.active { display: flex; }
+        .slide-header { font-size: 14px; font-weight: 700; color: var(--primary); text-transform: uppercase; letter-spacing: 1px; margin-bottom: 8px; }
+        .slide-title { font-size: 32px; font-weight: 800; margin-bottom: 24px; color: var(--text-dark); }
+        .slide-content { font-size: 18px; line-height: 1.6; color: #334155; }
+        .slide-content ul { margin-left: 24px; margin-bottom: 16px; }
+        .slide-content li { margin-bottom: 10px; }
+        .controls { position: absolute; bottom: 20px; right: 24px; display: flex; gap: 10px; align-items: center; z-index: 10; }
+        .btn-slide { background: var(--primary); color: white; border: none; padding: 8px 16px; border-radius: 8px; font-weight: 600; cursor: pointer; }
+        .slide-counter { font-size: 13px; font-weight: 700; color: #64748b; margin-right: 12px; }
+        .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
+        .card { background: var(--bg-light); border: 1px solid #e2e8f0; border-radius: 10px; padding: 18px; }
+    </style>
+</head>
+<body>
+
+<div class="slide-container">
+    <!-- Slide 1 -->
+    <div class="slide active">
+        <div class="slide-header">Anna University R2025 Semester 3 Capstone</div>
+        <h1 class="slide-title" style="font-size: 42px; color: var(--primary);">PreethiMart</h1>
+        <p style="font-size: 20px; color: #475569; margin-bottom: 24px;">Enterprise Multi-Vendor E-Commerce Platform</p>
+        <div class="card" style="max-width: 500px;">
+            <p><strong>Builder:</strong> Solo Capstone Project</p>
+            <p><strong>Window:</strong> July 24 – October 10, 2026</p>
+            <p><strong>Tech Stack:</strong> Java 17, Servlets, JSP/JSTL, JDBC, HikariCP, H2 DB</p>
+            <p><strong>Version:</strong> v1.1.0 (Full Build + AI Chatbot)</p>
+        </div>
+    </div>
+
+    <!-- Slide 2 -->
+    <div class="slide">
+        <div class="slide-header">Architecture & Layering</div>
+        <h2 class="slide-title">N-Tier Enterprise Architecture</h2>
+        <div class="grid-2">
+            <div class="card">
+                <h4 style="color: var(--primary); margin-bottom: 8px;">Presentation & Controller</h4>
+                <ul>
+                    <li>JSP Views with JSTL XML auto-escaping</li>
+                    <li>Security Filters: AuthFilter & EncodingFilter</li>
+                    <li>Front Controller Servlets routing MVC actions</li>
+                    <li>REST APIs with <code>{success, data, error}</code> envelope</li>
+                </ul>
+            </div>
+            <div class="card">
+                <h4 style="color: var(--primary); margin-bottom: 8px;">Business & Persistence</h4>
+                <ul>
+                    <li>Strict Service Layer enforcing validation rules</li>
+                    <li>Interface-based DAOs with PreparedStatement</li>
+                    <li>ACID Transactions with atomic stock rollback</li>
+                    <li>HikariCP Connection Pool + Embedded H2</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <!-- Slide 3 -->
+    <div class="slide">
+        <div class="slide-header">Modules & Capabilities</div>
+        <h2 class="slide-title">Full Feature Coverage (F1–F8)</h2>
+        <div class="slide-content">
+            <div class="grid-2">
+                <div>
+                    <ul>
+                        <li><strong>F1:</strong> Secure Auth (jBCrypt, session regeneration)</li>
+                        <li><strong>F2:</strong> Seller catalog & stock management</li>
+                        <li><strong>F3:</strong> Category filtering & keyword search</li>
+                        <li><strong>F4:</strong> Dynamic cart & quantity updates</li>
+                    </ul>
+                </div>
+                <div>
+                    <ul>
+                        <li><strong>F5:</strong> Mock payment checkout & invoice</li>
+                        <li><strong>F6:</strong> Buyer history & Seller order fulfillment</li>
+                        <li><strong>F7:</strong> Admin metrics, users, and moderation</li>
+                        <li><strong>F8:</strong> Verified purchase 1–5★ reviews</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Slide 4 -->
+    <div class="slide">
+        <div class="slide-header">Phase 3 AI Assistant</div>
+        <h2 class="slide-title">PreethiBot AI Conversational Assistant (O4)</h2>
+        <div class="slide-content">
+            <div class="grid-2">
+                <div class="card">
+                    <h4 style="color: var(--primary); margin-bottom: 8px;">Backend Resilience</h4>
+                    <ul>
+                        <li><code>ChatProvider</code> interface abstraction</li>
+                        <li>Dynamic provider flag: <code>gemini | mock</code></li>
+                        <li>10 messages/minute per-session rate limit</li>
+                        <li>In-memory question caching & timeout defense</li>
+                    </ul>
+                </div>
+                <div class="card">
+                    <h4 style="color: var(--primary); margin-bottom: 8px;">Frontend Widget</h4>
+                    <ul>
+                        <li>Floating launcher icon with smooth drawer</li>
+                        <li>Instant FAQ prompt chips (Shipping, Returns)</li>
+                        <li>Asynchronous non-blocking fetch pipeline</li>
+                        <li>Server-side prompt scoping to PreethiMart</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Slide 5 -->
+    <div class="slide">
+        <div class="slide-header">Quality Engineering</div>
+        <h2 class="slide-title">Verification, Tests & Security Checklist</h2>
+        <div class="slide-content">
+            <ul>
+                <li><strong>100% PreparedStatement:</strong> Zero raw SQL string concatenation across DAOs</li>
+                <li><strong>21 Automated Tests Passing:</strong> Comprehensive JUnit 5 + Mockito + Embedded H2 suite</li>
+                <li><strong>Session Security:</strong> Session ID regeneration on login prevents fixation attacks</li>
+                <li><strong>Continuous Integration:</strong> Automated GitHub Actions workflow on push/PR</li>
+                <li><strong>Zero Leakage:</strong> Custom error pages hide JVM stack traces; secrets gitignored</li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- Controls -->
+    <div class="controls">
+        <span class="slide-counter" id="slideCounter">Slide 1 / 5</span>
+        <button class="btn-slide" onclick="prevSlide()"><i class="fa-solid fa-chevron-left"></i> Prev</button>
+        <button class="btn-slide" onclick="nextSlide()">Next <i class="fa-solid fa-chevron-right"></i></button>
+    </div>
+</div>
+
+<script>
+    let currentSlide = 0;
+    const slides = document.querySelectorAll('.slide');
+    const counter = document.getElementById('slideCounter');
+
+    function showSlide(index) {
+        slides.forEach(s => s.classList.remove('active'));
+        slides[index].classList.add('active');
+        counter.innerText = 'Slide ' + (index + 1) + ' / ' + slides.length;
+    }
+
+    function nextSlide() {
+        if (currentSlide < slides.length - 1) {
+            currentSlide++;
+            showSlide(currentSlide);
+        }
+    }
+
+    function prevSlide() {
+        if (currentSlide > 0) {
+            currentSlide--;
+            showSlide(currentSlide);
+        }
+    }
+
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'ArrowRight' || e.key === 'Space') nextSlide();
+        if (e.key === 'ArrowLeft') prevSlide();
+    });
+</script>
+</body>
+</html>

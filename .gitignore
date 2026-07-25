@@ -1,0 +1,17 @@
+target/
+*.class
+*.war
+*.log
+.env
+config.properties
+*.mv.db
+*.trace.db
+.idea/
+*.iml
+.vscode/
+.settings/
+.classpath
+.project
+.DS_Store
+Thumbs.db
+tomcat.*/

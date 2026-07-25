@@ -1,0 +1,21 @@
+# PreethiMart Configuration File Example
+# Anna University R2025 Semester 3 Capstone
+
+# Database Configuration (H2 File / Embedded)
+db.url=jdbc:h2:./preethimart;DB_CLOSE_DELAY=-1;DATABASE_TO_LOWER=TRUE
+db.username=sa
+db.password=
+db.pool.maximum=10
+db.pool.minimum=2
+
+# Session Configuration
+session.timeout.minutes=30
+
+# Server Port
+server.port=8080
+
+# AI Chatbot Configuration (gemini | mock)
+ai.chatbot.provider=mock
+ai.chatbot.gemini.key=YOUR_GEMINI_API_KEY_HERE
+ai.chatbot.gemini.model=gemini-1.5-flash
+ai.chatbot.rate.limit=10
