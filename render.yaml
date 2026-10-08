@@ -1,0 +1,15 @@
+services:
+  - type: web
+    name: preethimart
+    runtime: docker
+    plan: free
+    region: oregon
+    dockerfilePath: ./Dockerfile
+    healthCheckPath: /api/v1/health
+    envVars:
+      - key: PORT
+        value: 10000
+      - key: CHATBOT_PROVIDER
+        value: mock
+      - key: GEMINI_API_KEY
+        sync: false

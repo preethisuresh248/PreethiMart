@@ -111,6 +111,13 @@ http://localhost:8080/api/v1/health  ==> {"status":"UP","db":"UP"}
 
 ---
 
+## ☁️ Cloud Deployment (Render, Railway, Cloud Run)
+PreethiMart is fully containerized with a production multi-stage `Dockerfile` and dynamic port binding.
+- **1-Click Render Deploy:** Connect `https://github.com/preethisuresh248/PreethiMart` to Render (Runtime: Docker) and launch for free.
+- **Full Guide:** See [docs/DEPLOYMENT.md](docs/DEPLOYMENT.md) for step-by-step instructions.
+
+---
+
 ## 🔑 Demo Accounts & Credentials
 The application automatically seeds realistic demo data on initial boot:
 - **Buyer:** `buyer1@preethimart.com` / `Buyer@123`
