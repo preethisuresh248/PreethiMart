@@ -7,7 +7,158 @@
 
     <display-name>PreethiMart</display-name>
 
-    <!-- 30 Minutes Explicit Session Timeout -->
+    <!-- 1. Application Lifecycle Listener (HikariCP & Database Initializer) -->
+    <listener>
+        <listener-class>com.preethi.preethimart.listener.AppContextListener</listener-class>
+    </listener>
+
+    <!-- 2. Security & Encoding Filters -->
+    <filter>
+        <filter-name>EncodingFilter</filter-name>
+        <filter-class>com.preethi.preethimart.filter.EncodingFilter</filter-class>
+    </filter>
+    <filter-mapping>
+        <filter-name>EncodingFilter</filter-name>
+        <url-pattern>/*</url-pattern>
+    </filter-mapping>
+
+    <filter>
+        <filter-name>AuthFilter</filter-name>
+        <filter-class>com.preethi.preethimart.filter.AuthFilter</filter-class>
+    </filter>
+    <filter-mapping>
+        <filter-name>AuthFilter</filter-name>
+        <url-pattern>/*</url-pattern>
+    </filter-mapping>
+
+    <!-- 3. Core MVC Servlets -->
+    <servlet>
+        <servlet-name>AuthServlet</servlet-name>
+        <servlet-class>com.preethi.preethimart.controller.AuthServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>AuthServlet</servlet-name>
+        <url-pattern>/auth/*</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>ProductServlet</servlet-name>
+        <servlet-class>com.preethi.preethimart.controller.ProductServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>ProductServlet</servlet-name>
+        <url-pattern>/products</url-pattern>
+        <url-pattern>/products/*</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>CartServlet</servlet-name>
+        <servlet-class>com.preethi.preethimart.controller.CartServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>CartServlet</servlet-name>
+        <url-pattern>/cart</url-pattern>
+        <url-pattern>/cart/*</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>CheckoutServlet</servlet-name>
+        <servlet-class>com.preethi.preethimart.controller.CheckoutServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>CheckoutServlet</servlet-name>
+        <url-pattern>/checkout</url-pattern>
+        <url-pattern>/checkout/*</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>OrderServlet</servlet-name>
+        <servlet-class>com.preethi.preethimart.controller.OrderServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>OrderServlet</servlet-name>
+        <url-pattern>/orders</url-pattern>
+        <url-pattern>/orders/*</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>SellerServlet</servlet-name>
+        <servlet-class>com.preethi.preethimart.controller.SellerServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>SellerServlet</servlet-name>
+        <url-pattern>/seller</url-pattern>
+        <url-pattern>/seller/*</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>AdminServlet</servlet-name>
+        <servlet-class>com.preethi.preethimart.controller.AdminServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>AdminServlet</servlet-name>
+        <url-pattern>/admin</url-pattern>
+        <url-pattern>/admin/*</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>ReviewServlet</servlet-name>
+        <servlet-class>com.preethi.preethimart.controller.ReviewServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>ReviewServlet</servlet-name>
+        <url-pattern>/reviews/*</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>WishlistServlet</servlet-name>
+        <servlet-class>com.preethi.preethimart.controller.WishlistServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>WishlistServlet</servlet-name>
+        <url-pattern>/wishlist</url-pattern>
+        <url-pattern>/wishlist/*</url-pattern>
+    </servlet-mapping>
+
+    <!-- 4. REST API Servlets -->
+    <servlet>
+        <servlet-name>HealthApiServlet</servlet-name>
+        <servlet-class>com.preethi.preethimart.controller.api.HealthApiServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>HealthApiServlet</servlet-name>
+        <url-pattern>/api/v1/health</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>ChatApiServlet</servlet-name>
+        <servlet-class>com.preethi.preethimart.controller.api.ChatApiServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>ChatApiServlet</servlet-name>
+        <url-pattern>/api/chat</url-pattern>
+        <url-pattern>/api/v1/chat</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>ProductApiServlet</servlet-name>
+        <servlet-class>com.preethi.preethimart.controller.api.ProductApiServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>ProductApiServlet</servlet-name>
+        <url-pattern>/api/v1/products</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>CartApiServlet</servlet-name>
+        <servlet-class>com.preethi.preethimart.controller.api.CartApiServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>CartApiServlet</servlet-name>
+        <url-pattern>/api/v1/cart</url-pattern>
+    </servlet-mapping>
+
+    <!-- 5. Session Timeout & Security -->
     <session-config>
         <session-timeout>30</session-timeout>
         <cookie-config>
@@ -17,12 +168,12 @@
         <tracking-mode>COOKIE</tracking-mode>
     </session-config>
 
-    <!-- Welcome File List -->
+    <!-- 6. Welcome File List -->
     <welcome-file-list>
         <welcome-file>index.jsp</welcome-file>
     </welcome-file-list>
 
-    <!-- Custom Error Pages Hiding Stack Traces -->
+    <!-- 7. Custom Error Pages Hiding Stack Traces -->
     <error-page>
         <error-code>404</error-code>
         <location>/WEB-INF/views/error/404.jsp</location>

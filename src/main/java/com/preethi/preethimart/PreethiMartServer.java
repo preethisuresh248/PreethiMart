@@ -14,17 +14,23 @@ public class PreethiMartServer {
         int port = 8080;
         String portEnv = System.getenv("PORT");
         if (portEnv != null && !portEnv.trim().isEmpty()) {
-            port = Integer.parseInt(portEnv.trim());
+            try {
+                port = Integer.parseInt(portEnv.trim());
+            } catch (NumberFormatException ignored) {}
         }
+
+        File baseDir = new File("target/tomcat-embed");
+        baseDir.mkdirs();
 
         Tomcat tomcat = new Tomcat();
         tomcat.setPort(port);
-        tomcat.getConnector(); // trigger default connector creation
+        tomcat.setBaseDir(baseDir.getAbsolutePath());
+        tomcat.getConnector(); // Initialize default HTTP connector
 
-        String docBase = new File("src/main/webapp").getAbsolutePath();
-        StandardContext ctx = (StandardContext) tomcat.addWebapp("", docBase);
+        File webappDir = new File("src/main/webapp");
+        StandardContext ctx = (StandardContext) tomcat.addWebapp("", webappDir.getAbsolutePath());
+        ctx.setParentClassLoader(PreethiMartServer.class.getClassLoader());
 
-        // Declare alternative location for classes so classes compiled to target/classes are loaded
         File additionWebInfClasses = new File("target/classes");
         if (additionWebInfClasses.exists()) {
             WebResourceRoot resources = new StandardRoot(ctx);
@@ -34,9 +40,10 @@ public class PreethiMartServer {
         }
 
         System.out.println("==========================================================");
-        System.out.println("   PreethiMart Web Application Starting Up");
-        System.out.println("   URL: http://localhost:" + port + "/");
-        System.out.println("   Anna University R2025 Semester 3 Capstone");
+        System.out.println("   PreethiMart Web Application Started Successfully");
+        System.out.println("   Live URL: http://localhost:" + port + "/");
+        System.out.println("   Health:   http://localhost:" + port + "/api/v1/health");
+        System.out.println("   Catalog:  http://localhost:" + port + "/products");
         System.out.println("==========================================================");
 
         tomcat.start();
